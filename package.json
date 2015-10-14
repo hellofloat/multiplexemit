@@ -1,7 +1,7 @@
 {
   "name": "multiplexemit",
   "version": "0.1.0",
-  "description": "A convenience function for multiplexing an emitter.",
+  "description": "A convenience module for multiplexing an emitter.",
   "homepage": "https://github.com/hellofloat/multiplexemit",
   "repository": {
     "type": "git",
