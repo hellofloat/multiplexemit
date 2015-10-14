@@ -1,0 +1,39 @@
+{
+  "name": "multiplexemit",
+  "version": "0.1.0",
+  "description": "A convenience function for multiplexing an emitter.",
+  "homepage": "https://github.com/hellofloat/multiplexemit",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hellofloat/multiplexemit.git"
+  },
+  "main": "./index.js",
+  "scripts": {
+    "test": "tape test/test.js | tap-spec"
+  },
+  "keywords": [
+    "multiplexemit",
+    "multiplex",
+    "emit",
+    "emitter"
+  ],
+  "company": "Float, Inc. (https://hellofloat.com)",
+  "contributors": [
+    {
+      "name": "Andy Burke",
+      "email": "aburke@bitflood.org",
+      "url": "http://github.com/andyburke"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "async": "^1.4.2",
+    "eventemitter2": "^0.4.14",
+    "glob": "^5.0.15",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.1"
+  },
+  "dependencies": {
+    "es6-shim": "^0.33.6"
+  }
+}
