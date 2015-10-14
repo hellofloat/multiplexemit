@@ -5,6 +5,49 @@ Allows you to cause an emitter to emit the same event to multiple other emitters
 
 ## Examples
 
+### Basics
+
+```
+require( 'es6-shim' );
+var EventEmitter = require( 'events' );
+var me = require( 'multiplexemit' );
+
+var primaryEmitter = Object.assign( {}, EventEmitter.prototype );
+var multiplexedEmitter = Object.assign( {}, EventEmitter.prototype );
+
+me.multiplex( primaryEmitter, multiplexedEmitter );
+
+// now multiplexedEmitter will get the same events emitted that primaryEmitter does:
+
+multiplexedEmitter.on( 'foo', function() {
+    console.log( 'foo' );
+} );
+
+primaryEmitter.emit( 'foo' ); // will cause multiplexedEmitter to fire and write 'foo' to the console
+```
+
+### Namespaces
+
+```
+require( 'es6-shim' );
+var EventEmitter = require( 'events' );
+var me = require( 'multiplexemit' );
+
+var primaryEmitter = Object.assign( {}, EventEmitter.prototype );
+var multiplexedEmitter = Object.assign( {}, EventEmitter.prototype );
+
+me.multiplex( primaryEmitter, multiplexedEmitter, 'namespace' );
+
+// now multiplexedEmitter will get the same events emitted that primaryEmitter does,
+// but with the 'namespace' prefix:
+
+multiplexedEmitter.on( 'namespace.foo', function() {
+    console.log( 'foo' );
+} );
+
+primaryEmitter.emit( 'foo' ); // will cause multiplexedEmitter to fire and write 'foo' to the console
+```
+
 ## License
 
 The MIT License (MIT)
