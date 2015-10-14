@@ -23,7 +23,7 @@ multiplexedEmitter.on( 'foo', function() {
     console.log( 'foo' );
 } );
 
-primaryEmitter.emit( 'foo' ); // will cause multiplexedEmitter to fire and write 'foo' to the console
+primaryEmitter.emit( 'foo' ); // will cause multiplexedEmitter to output 'foo'
 ```
 
 ### Namespaces
@@ -45,7 +45,7 @@ multiplexedEmitter.on( 'namespace.foo', function() {
     console.log( 'foo' );
 } );
 
-primaryEmitter.emit( 'foo' ); // will cause multiplexedEmitter to fire and write 'foo' to the console
+primaryEmitter.emit( 'foo' ); // will cause multiplexedEmitter to ouput 'foo'
 ```
 
 ## License
