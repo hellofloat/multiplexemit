@@ -2,9 +2,9 @@
 
 'use strict';
 
-var async = require( 'async' );
-var path = require( 'path' );
-var glob = require( 'glob' );
+const async = require( 'async' );
+const path = require( 'path' );
+const glob = require( 'glob' );
 
 glob( path.join( __dirname, '*.js' ), function( error, files ) {
     if ( error ) {
@@ -19,7 +19,7 @@ glob( path.join( __dirname, '*.js' ), function( error, files ) {
             return;
         }
 
-        var test = require( path.resolve( process.cwd(), file ) );
+        const test = require( path.resolve( process.cwd(), file ) );
         test( next );
     }, function( error ) {
         if ( error ) {

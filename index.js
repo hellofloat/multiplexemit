@@ -13,16 +13,16 @@ module.exports = {
             originalEmitter.__emit = originalEmitter.emit;
 
             originalEmitter.emit = function() {
-                var _arguments = arguments;
+                const _arguments = arguments;
 
                 originalEmitter.__emit.apply( originalEmitter, _arguments );
 
                 originalEmitter.__multiplexEmitterList.forEach( function( emitterInfo ) {
 
-                    var args = _arguments;
+                    let args = _arguments;
                     if ( typeof emitterInfo.namespace === 'string' && emitterInfo.namespace.length ) {
                         args = Array.prototype.slice.call( _arguments, 0 );
-                        var eventName = args.shift();
+                        let eventName = args.shift();
                         eventName = emitterInfo.namespace + ( typeof separator !== 'undefined' ? separator : '.' ) + eventName;
                         args.unshift( eventName );
                     }

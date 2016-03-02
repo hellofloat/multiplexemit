@@ -1,20 +1,19 @@
 'use strict';
 
-require( 'es6-shim' );
-var async = require( 'async' );
-var EventEmitter2 = require( 'eventemitter2' ).EventEmitter2;
-var multiplexemit = require( '../index.js' );
-var test = require( 'tape' );
+const async = require( 'async' );
+const EventEmitter = require( 'events' );
+const multiplexemit = require( '../index.js' );
+const test = require( 'tape' );
 
 module.exports = function( callback ) {
 
     async.series( [
         function( next ) {
-            var sourceEmitter = Object.assign( {}, EventEmitter2.prototype );
-            var otherEmitter1 = Object.assign( {}, EventEmitter2.prototype );
+            let sourceEmitter = Object.assign( {}, EventEmitter.prototype );
+            let otherEmitter1 = Object.assign( {}, EventEmitter.prototype );
 
             test( 'single multiplexed emitter with namespace', function( t ) {
-                var watchdog = setTimeout( function() {
+                let watchdog = setTimeout( function() {
                     t.fail( 'timed out' );
                     t.end();
                     next( 'timed out' );
@@ -41,14 +40,14 @@ module.exports = function( callback ) {
         },
 
         function( next ) {
-            var sourceEmitter = Object.assign( {}, EventEmitter2.prototype );
-            var otherEmitter1 = Object.assign( {}, EventEmitter2.prototype );
+            let sourceEmitter = Object.assign( {}, EventEmitter.prototype );
+            let otherEmitter1 = Object.assign( {}, EventEmitter.prototype );
 
             test( 'unmultiplex with namespace', function( t ) {
                 multiplexemit.multiplex( sourceEmitter, otherEmitter1, 'foo' );
                 multiplexemit.unmultiplex( sourceEmitter, otherEmitter1, 'foo' );
 
-                var called = false;
+                let called = false;
                 otherEmitter1.on( 'foo.event', function() {
                     called = true;
                 } );
@@ -70,13 +69,13 @@ module.exports = function( callback ) {
         },
 
         function( next ) {
-            var sourceEmitter = Object.assign( {}, EventEmitter2.prototype );
-            var otherEmitter1 = Object.assign( {}, EventEmitter2.prototype );
-            var otherEmitter2 = Object.assign( {}, EventEmitter2.prototype );
-            var otherEmitter3 = Object.assign( {}, EventEmitter2.prototype );
+            let sourceEmitter = Object.assign( {}, EventEmitter.prototype );
+            let otherEmitter1 = Object.assign( {}, EventEmitter.prototype );
+            let otherEmitter2 = Object.assign( {}, EventEmitter.prototype );
+            let otherEmitter3 = Object.assign( {}, EventEmitter.prototype );
 
             test( 'multiple multiplexed emitters with the same namespace', function( t ) {
-                var watchdog = setTimeout( function() {
+                let watchdog = setTimeout( function() {
                     t.fail( 'timed out' );
                     t.end();
                     next( 'timed out' );
@@ -86,7 +85,7 @@ module.exports = function( callback ) {
                 multiplexemit.multiplex( sourceEmitter, otherEmitter2, 'foo' );
                 multiplexemit.multiplex( sourceEmitter, otherEmitter3, 'foo' );
 
-                var handled = 0;
+                let handled = 0;
                 function handleEvent( emitterName, event, str ) {
                     t.deepEqual( event, {
                         foo: 'bar',
@@ -113,13 +112,13 @@ module.exports = function( callback ) {
         },
 
         function( next ) {
-            var sourceEmitter = Object.assign( {}, EventEmitter2.prototype );
-            var otherEmitter1 = Object.assign( {}, EventEmitter2.prototype );
-            var otherEmitter2 = Object.assign( {}, EventEmitter2.prototype );
-            var otherEmitter3 = Object.assign( {}, EventEmitter2.prototype );
+            let sourceEmitter = Object.assign( {}, EventEmitter.prototype );
+            let otherEmitter1 = Object.assign( {}, EventEmitter.prototype );
+            let otherEmitter2 = Object.assign( {}, EventEmitter.prototype );
+            let otherEmitter3 = Object.assign( {}, EventEmitter.prototype );
 
             test( 'multiple multiplexed emitters with different namespaces', function( t ) {
-                var watchdog = setTimeout( function() {
+                let watchdog = setTimeout( function() {
                     t.fail( 'timed out' );
                     t.end();
                     next( 'timed out' );
@@ -129,7 +128,7 @@ module.exports = function( callback ) {
                 multiplexemit.multiplex( sourceEmitter, otherEmitter2, 'bar' );
                 multiplexemit.multiplex( sourceEmitter, otherEmitter3, 'baz' );
 
-                var handled = 0;
+                let handled = 0;
                 function handleEvent( emitterName, event, str ) {
                     t.deepEqual( event, {
                         foo: 'bar',
