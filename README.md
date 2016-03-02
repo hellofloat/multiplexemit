@@ -8,12 +8,11 @@ Allows you to cause an emitter to emit the same event to multiple other emitters
 ### Basics
 
 ```
-require( 'es6-shim' );
-var EventEmitter = require( 'events' );
-var me = require( 'multiplexemit' );
+const EventEmitter = require( 'events' );
+const me = require( 'multiplexemit' );
 
-var primaryEmitter = Object.assign( {}, EventEmitter.prototype );
-var multiplexedEmitter = Object.assign( {}, EventEmitter.prototype );
+let primaryEmitter = Object.assign( {}, EventEmitter.prototype );
+let multiplexedEmitter = Object.assign( {}, EventEmitter.prototype );
 
 me.multiplex( primaryEmitter, multiplexedEmitter );
 
@@ -29,12 +28,11 @@ primaryEmitter.emit( 'foo' ); // will cause multiplexedEmitter to output 'foo'
 ### Namespaces
 
 ```
-require( 'es6-shim' );
-var EventEmitter = require( 'events' );
-var me = require( 'multiplexemit' );
+const EventEmitter = require( 'events' );
+const me = require( 'multiplexemit' );
 
-var primaryEmitter = Object.assign( {}, EventEmitter.prototype );
-var multiplexedEmitter = Object.assign( {}, EventEmitter.prototype );
+let primaryEmitter = Object.assign( {}, EventEmitter.prototype );
+let multiplexedEmitter = Object.assign( {}, EventEmitter.prototype );
 
 me.multiplex( primaryEmitter, multiplexedEmitter, 'namespace' );
 
