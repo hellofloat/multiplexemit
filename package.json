@@ -1,6 +1,6 @@
 {
   "name": "multiplexemit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A convenience module for multiplexing an emitter.",
   "homepage": "https://github.com/hellofloat/multiplexemit",
   "repository": {
@@ -34,6 +34,5 @@
     "tape": "^4.2.1"
   },
   "dependencies": {
-    "es6-shim": "^0.33.6"
   }
 }

@@ -1,7 +1,5 @@
 'use strict';
 
-require( 'es6-shim' );
-
 module.exports = {
     multiplex: function( originalEmitter, otherEmitter, namespace, separator ) {
 
